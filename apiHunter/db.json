@@ -1,0 +1,34 @@
+{
+  "products": [
+    {
+      "id": "1c5d",
+      "title": "purv",
+      "price": "1234",
+      "img": "https://picsum.photos/200/300"
+    },
+    {
+      "id": "c6e0",
+      "title": "milap",
+      "price": "4565",
+      "img": "https://picsum.photos/200/300"
+    },
+    {
+      "id": "5a12",
+      "title": "deep",
+      "price": "435565",
+      "img": "https://picsum.photos/200/300"
+    },
+    {
+      "id": "a2ed",
+      "title": "jigar",
+      "price": "45",
+      "img": "https://picsum.photos/200/300"
+    },
+    {
+      "id": "4173",
+      "title": "deepak",
+      "price": "454",
+      "img": "https://picsum.photos/200/300"
+    }
+  ]
+}
