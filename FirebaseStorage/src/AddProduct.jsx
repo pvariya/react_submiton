@@ -1,5 +1,8 @@
-// import { useState } from "react";
+
+import { useEffect, useState } from "react";
+import { addDoc, collection, deleteDoc, doc, getDocs, updateDoc } from 'firebase/firestore'
 import "./Css.css"
+import { db } from "./FireBase";
 
 const AddProduct = () => {
   const [email, setEmail] = useState("")
@@ -33,7 +36,7 @@ const AddProduct = () => {
 
   const handleSubmit = async (e) => {
       e.preventDefault()
-      // make api call to create user
+   
       let user = {
           email: email,
           password: password,
@@ -41,22 +44,26 @@ const AddProduct = () => {
       }
       createUser(user)
   }
-
   const deleteuser = async (id) => {
-      let docref = await doc(db, "users", id)
-      let data = await deleteDoc(docref)
-      getData()
-
-
-  }
-
+    try {
+      let docref = doc(db, "users", id);
+      await deleteDoc(docref);
+      getData();
+    } catch (error) {
+      console.error("Error deleting user:", error);
+    }
+  };
+  
   const updateuser = async (id) => {
-      let docref = await doc(db, "users", id)
-      let data = await updateDoc(docref, { email: email })
-      getData()
-
-
-  }
+    try {
+      let docref = doc(db, "users", id);
+      await updateDoc(docref, { email: email }); 
+      getData();
+    } catch (error) {
+      console.error("Error updating user:", error);
+    }
+  };
+  
   
     return (
       <div>
