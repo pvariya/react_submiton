@@ -4,7 +4,7 @@ import ShowTask from './ShowTask'
 
 const Home = () => {
   return (
-    <div>
+    <div className=''>
       <Addtask/>
       <ShowTask/>
     </div>
