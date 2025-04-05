@@ -27,7 +27,6 @@ const AddProduct = () => {
       })
       console.log(userdata);
       setUsers(userdata)
-
   }
 
   useEffect(() => {
