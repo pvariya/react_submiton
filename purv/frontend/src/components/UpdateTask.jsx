@@ -25,8 +25,8 @@ const UpdateTask = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const updatedTask = { id, title, description };
-    dispatch(updateTask(updatedTask));
+    const updatedTask = { title, description };
+    dispatch(updateTask({id,data:updatedTask}));
     navigate("/");
   };
 

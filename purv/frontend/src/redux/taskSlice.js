@@ -13,7 +13,7 @@ export const addtask = createAsyncThunk("task/addTask", async (data) => {
 export const getTask = createAsyncThunk("task/getTask", async () => {
   try {
     const res = await axios.get("http://localhost:8090/task/get");
-       return res.data;
+    return res.data;
   } catch (error) {
     return error;
   }
@@ -71,7 +71,7 @@ const taskSlice = createSlice({
       .addCase(updateTask.fulfilled, (state, action) => {
         state.loading = false;
         const updateTask = state.tasks.find((task) =>
-          task._id === action.payload ? action.payload : task
+          task._id === action.payload.id ? action.payload : task
         );
         state.tasks = updateTask;
       })
@@ -81,7 +81,6 @@ const taskSlice = createSlice({
       });
   },
 });
-
 
 const store = configureStore({
   reducer: {
