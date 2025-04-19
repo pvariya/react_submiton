@@ -64,6 +64,18 @@ export const getById = createAsyncThunk("product/getById", async (id) => {
   }
 });
 
+export const statusChang = createAsyncThunk(
+  "product/statusChang",
+  async ({ id, data }) => {
+    try {
+      const res = await axios.put(`http://localhost:3000/Products/${id}`, data);
+      return res.data;
+    } catch (error) {
+      throw new Error("Failed to fetch product by ID");
+    }
+  }
+);
+
 const productSlice = createSlice({
   name: "product",
   initialState: {
@@ -99,6 +111,13 @@ const productSlice = createSlice({
         state.error = action.payload;
       })
       .addCase(updateProduct.fulfilled, (state, action) => {
+        state.loading = false;
+        const updatedProducts = state.products.map((product) =>
+          product.id === action.payload.id ? action.payload : product
+        );
+        state.products = updatedProducts;
+      })
+      .addCase(statusChang.fulfilled, (state, action) => {
         state.loading = false;
         const updatedProducts = state.products.map((product) =>
           product.id === action.payload.id ? action.payload : product

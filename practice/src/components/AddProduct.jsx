@@ -11,7 +11,7 @@ const AddProduct = () => {
 
   const handleAddProduct = (e) => {
     e.preventDefault();
-    let newProduct = { name, price };
+    let newProduct = { name, price,status: "pending" };
     dispatch(addProduct(newProduct));
     navigate('/');
     e.target.reset();

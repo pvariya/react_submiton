@@ -1,9 +1,12 @@
 {
   "Products": [
     {
-      "name": "575687xhfch",
-      "price": "76967",
-      "id": "792d"
+      "status": "pending",
+      "id": "b10f"
+    },
+    {
+      "status": "pending",
+      "id": "473f"
     }
   ]
 }
