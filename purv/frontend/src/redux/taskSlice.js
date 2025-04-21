@@ -27,7 +27,8 @@ export const deleteTask = createAsyncThunk("task/deleteTask", async (id) => {
 export const updateTask = createAsyncThunk(
   "task/updateTask",
   async ({ id, data }) => {
-    const res = await axios.patch(`http://localhost:8090/task/${id}`, data);
+    // console.log("slice page", id, data);
+    const res = await axios.put(`http://localhost:8090/task/${id}`, data);
     return res.data;
   }
 );
@@ -69,11 +70,10 @@ const taskSlice = createSlice({
         state.tasks = state.tasks.filter((task) => task._id !== action.payload);
       })
       .addCase(updateTask.fulfilled, (state, action) => {
-        state.loading = false;
-        const updateTask = state.tasks.find((task) =>
-          task._id === action.payload.id ? action.payload : task
+        const updatedTasks = state.tasks.map((task) =>
+          task._id === action.payload._id ? action.payload : task
         );
-        state.tasks = updateTask;
+        state.tasks = updatedTasks;
       })
       .addCase(getTaskBtId.fulfilled, (state, action) => {
         state.loading = false;

@@ -19,8 +19,16 @@ const getTask = async (req, res) => {
 
 const updatetask = async (req, res) => {
   const { id } = req.params;
+  console.log(id);
+  const { title, description } = req.body;
+  console.log(title, description);
   try {
-    const task = await Task.findByIdAndUpdate(id);
+    const task = await Task.findByIdAndUpdate(
+      id,
+      { title, description },
+      { new: true }
+    );
+
     res.send(task);
   } catch (error) {
     res.send("error", error);
@@ -35,4 +43,4 @@ const deleteTask = async (req, res) => {
   const deletetask = await Task.findByIdAndDelete(req.params.id);
   res.send(deletetask);
 };
-module.exports = { addTask, getTask, updatetask, deleteTask,getbyId };
+module.exports = { addTask, getTask, updatetask, deleteTask, getbyId };
